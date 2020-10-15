@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download progress</title>
+  <style>
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .flex>* {
+      margin-right: 8px;
+    }
+
+    .form-group>input {
+      padding: 8px 16px;
+      width: 300px;
+    }
+
+    button#btnGet {
+      padding: 8px 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <h1>Download Example</h1>
+    <a href="./index.html">Try upload example!</a>
+  </div>
+  <div class="flex">
+    <div class="form-group">
+      <label for="url">URL to get</label>
+      <input id="url" type="text"
+        value="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3" />
+    </div>
+    <div class="action">
+      <button type="button" id="btnGet">GET</button>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="progress">
+      Progress: <span id="percentage">0</span> (%)
+    </div>
+  </div>
+  <script src="./xhrRequest.js"></script>
+  <script>
+    const urlEle = document.getElementById('url');
+    const percentageEle = document.getElementById('percentage');
+    const btnGet = document.getElementById('btnGet');
+
+    btnGet.addEventListener('click', getUrl);
+    btnGet.addEventListener('click', restPercentage);
+
+    function getUrl() {
+      const url = urlEle.value;
+      console.log(`Getting ${url}...`);
+      xhrRequest({
+        url,
+        method: 'get',
+        eventHandlers: {
+          progress: progress
+        }
+      });
+    }
+
+    function progress(event) {
+      const percentage = (event.loaded / event.total) * 100;
+      percentageEle.innerText = percentage.toFixed(2);
+    }
+
+    function restPercentage() {
+      percentageEle.innerText = 0;
+    }
+  </script>
+</body>
+
+</html>

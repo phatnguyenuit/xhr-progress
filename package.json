@@ -1,0 +1,24 @@
+{
+  "name": "xhr-progress",
+  "version": "1.0.0",
+  "description": "Monitor request progress with XHR Request",
+  "main": "xhrRequest.js",
+  "scripts": {
+    "deploy": "gh-pages -d public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phatnguyenuit/xhr-progress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phatnguyenuit/xhr-progress/issues"
+  },
+  "homepage": "https://phatnguyenuit.github.io/xhr-progress",
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
